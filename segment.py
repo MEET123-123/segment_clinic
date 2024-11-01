@@ -10,7 +10,6 @@ path = kagglehub.dataset_download("balraj98/cvcclinicdb")
 print("Path to dataset files:", path)
 '''
 
-
 def transform_mask_txt(mask_path,txt_path):
     # 读取mask文件
     image = cv2.imread(mask_path)
@@ -22,8 +21,8 @@ def transform_mask_txt(mask_path,txt_path):
     # 打开txt文件准备写入
     with open(txt_path, 'w') as f:
         # only one class
-        f.write('0 ')
         for contour in contours:
+            f.write('0 ')
             # 轮廓近似的精度参数
             epsilon = 0.005 * cv2.arcLength(contour, True)  # 注意：这里使用contour而不是contours[0]
             approx_contour = cv2.approxPolyDP(contour, epsilon, True)
@@ -61,7 +60,7 @@ def convert_tif_to_jpg(tif_file_path, jpg_file_path, quality=95):
 
 
 if __name__ == '__main__':
-    for i in range(1,612):
+    for i in range(1,613):
         mask_path = f"E:/segment/process/CVC_ClinicDB/Ground_Truth/{i}.png"
         output_path = f"E:/segment/process/CVC_ClinicDB/labels/{i}.txt"
         transform_mask_txt(mask_path,output_path)
