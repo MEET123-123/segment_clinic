@@ -3,6 +3,7 @@ import cv2
 from PIL import Image
 import os
 import kagglehub
+from ultralytics import YOLO
 
 # download datasets
 '''
@@ -60,7 +61,14 @@ def convert_tif_to_jpg(tif_file_path, jpg_file_path, quality=95):
 
 
 if __name__ == '__main__':
+    #model = YOLO(r'E:/segment/ultralytics/ultralytics/ultralytics/cfg/models/v8/yolov8-seg.yaml').load("E:/segment/yolov8m-seg.pt")
+    #model.train(data=r'E:/segment/ultralytics/ultralytics/ultralytics/cfg/datasets/coco8-seg.yaml',
+                #epochs = 100,batch=16,device='cuda')
+    model = YOLO(r'E:/segment/pythonProject1/runs/segment/train2/weights/best.pt')
+    model.predict(r'E:/segment/val',save=True,boxes=True)
+    '''
     for i in range(1,613):
-        mask_path = f"E:/segment/process/CVC_ClinicDB/Ground_Truth/{i}.png"
-        output_path = f"E:/segment/process/CVC_ClinicDB/labels/{i}.txt"
-        transform_mask_txt(mask_path,output_path)
+    mask_path = f"E:/segment/process/CVC_ClinicDB/Ground_Truth/{i}.png"
+    output_path = f"E:/segment/process/CVC_ClinicDB/labels/{i}.txt"
+    transform_mask_txt(mask_path,output_path)
+    '''
