@@ -59,7 +59,6 @@ def convert_tif_to_jpg(tif_file_path, jpg_file_path, quality=95):
         print(f"An error occurred: {e}")
 
 
-
 if __name__ == '__main__':
     #model = YOLO(r'E:/segment/ultralytics/ultralytics/ultralytics/cfg/models/v8/yolov8-seg.yaml').load("E:/segment/yolov8m-seg.pt")
     #model.train(data=r'E:/segment/ultralytics/ultralytics/ultralytics/cfg/datasets/coco8-seg.yaml',
